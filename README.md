@@ -3,12 +3,18 @@
 **An open-source laboratory for causal prediction, realistic execution, paper trading, and scientifically validated learning.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-19%2F19_offline_passing-brightgreen)](#run-the-tests)
+[![CI](https://github.com/MajidAsghariTabrizi/the-gambler-trading-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/MajidAsghariTabrizi/the-gambler-trading-lab/actions/workflows/tests.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
 [![Release](https://img.shields.io/badge/release-v1.0.0--public-orange)](CHANGELOG.md)
 [![No live trading](https://img.shields.io/badge/live_trading-OFF-red)](SECURITY.md)
 
-> **The one-sentence summary:** we built a complete research platform that predicts, prices, decides, paper-trades, and *learns from its own outcomes* — and used it to prove, rigorously and repeatedly, that **none of our signals could pay the execution bill.** The negative result is the product.
+> ## The Trading AI That Knows When NOT to Trade.
+>
+> We built a complete research platform that predicts, prices, decides, paper-trades, and *learns from its own outcomes* — then used it to prove, rigorously and repeatedly, that **none of our signals could pay the execution bill.** Across 10,478 audited decision minutes it declined every single trade — and that restraint *was the correct answer*. The negative result is the product.
+>
+> **The key discovery, in one line:** our best directional model (54.6% accuracy, statistically indistinguishable from a 53.3% control) would still lose ~78 basis points per round trip to spread and fees — *prediction was never the binding constraint; execution cost was.*
+
+![Net-forecast MAE vs the constant baseline that beat every model](figures/fig_mae_vs_constant.svg)
 
 ---
 
@@ -45,7 +51,7 @@ Full journey, including every failed model (VNEXT, L2 T1/T2, Victory Fusion): [d
 ## Quick start (offline, no keys)
 
 ```bash
-git clone https://github.com/<owner>/the-gambler-trading-lab.git
+git clone https://github.com/MajidAsghariTabrizi/the-gambler-trading-lab.git
 cd the-gambler-trading-lab
 pip install -r requirements.txt     # numpy, scikit-learn, pytest only
 
@@ -53,7 +59,16 @@ python demo_offline.py              # full deterministic pipeline on synthetic d
 pytest -q tests                     # offline suite (arithmetic fixture, causality, lifecycle)
 ```
 
-The demo prints a real decision record — machine-readable, deterministic, replayable — including the exact reason a trade was rejected.
+The demo prints a real decision record — machine-readable, deterministic, replayable — including the exact reason a trade is rejected. Actual output:
+
+```text
+=== THE GAMBLER - OFFLINE DEMO (synthetic data) ===
+[BOOK]      bid 20236829289 ask 20274464281 spread 18.58 bps (SYNTHETIC)
+[FIXTURE]   1.5M round trip -> 1488246.020070195412777950382 TMN (cost 78.3598661987 bps, exact)
+[FORECAST]  net -70.20 bps (synthetic model)
+[ACCOUNT]   cash 15000000 TMN, btc 0
+[DECISION]  NO_TRADE - expected_net_below_buffer(+10bps)
+```
 
 ## Architecture
 

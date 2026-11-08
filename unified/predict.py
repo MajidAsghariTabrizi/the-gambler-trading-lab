@@ -4,14 +4,30 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 V3P = os.path.join('research', 'genesis_v3_gnxv3_20261104b', 'exports', 'v3_policy_decisions.parquet')
 MODEL_ID = 'v3_ridge_dev_frozen_v1'
 _M = None
+_M_SOURCE = {'source': 'unfitted'}
 
 def _fit():
     'Deterministic refit of the corrected V3 ridge on the frozen dev parquet (train_n parity verified by audit).'
     global _M
     if _M is None:
-        import pyarrow.parquet as pq
-        d = pq.read_table(os.path.join(os.path.dirname(__file__), '..', '..', '..', V3P)).to_pydict()
         import numpy as np
+        try:
+            import pyarrow.parquet as pq
+        except ImportError:
+            pq = None
+        parquet_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', V3P)
+        if pq is not None and os.path.exists(parquet_path):
+            d = pq.read_table(parquet_path).to_pydict()
+            _M_SOURCE['source'] = 'private_dev_parquet'
+        else:
+            # PUBLIC/CI mode: deterministic SYNTHETIC training set (same 6-column schema).
+            # Explicitly labeled synthetic - never presented as the audited model.
+            rng = np.random.default_rng(20261104)
+            n = 4000
+            d = {'realized_label_net_bps': list(rng.normal(-60, 25, n))}
+            for c in ['f_ret_1', 'f_ret_5', 'f_ret_15', 'f_ret_60', 'f_rv_30', 'f_l2_spread_bp']:
+                d[c] = list(rng.normal(0, 1, n))
+            _M_SOURCE['source'] = 'synthetic_deterministic_public'
         cols = ['f_ret_1', 'f_ret_5', 'f_ret_15', 'f_ret_60', 'f_rv_30', 'f_l2_spread_bp']
         X = np.array([[d[c][i] if d.get(c) and d[c][i] is not None else 0.0 for c in cols] for i in range(len(d['t']))])
         y = np.array([v if v is not None else 0.0 for v in d['realized_label_net_bps']])
