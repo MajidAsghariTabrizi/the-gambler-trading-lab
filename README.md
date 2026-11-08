@@ -1,130 +1,89 @@
-# The Gambler — Evidence-Driven Trading Research
+<p align="center"><img src="figures/hero.svg" alt="The Gambler — The Trading AI That Knows When NOT to Trade" width="880"></p>
 
-**An open-source laboratory for causal prediction, realistic execution, paper trading, and scientifically validated learning.**
+# THE GAMBLER
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+**The Trading AI That Knows When NOT to Trade.**
+*An evidence-driven research system for causal prediction, realistic trading execution, paper trading and controlled learning.*
+
 [![CI](https://github.com/MajidAsghariTabrizi/the-gambler-trading-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/MajidAsghariTabrizi/the-gambler-trading-lab/actions/workflows/tests.yml)
+[![Release](https://img.shields.io/badge/release-v1.2.0-blue)](https://github.com/MajidAsghariTabrizi/the-gambler-trading-lab/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
-[![Release](https://img.shields.io/badge/release-v1.0.0--public-orange)](CHANGELOG.md)
-[![No live trading](https://img.shields.io/badge/live_trading-OFF-red)](SECURITY.md)
 
-> ## The Trading AI That Knows When NOT to Trade.
->
-> We built a complete research platform that predicts, prices, decides, paper-trades, and *learns from its own outcomes* — then used it to prove, rigorously and repeatedly, that **none of our signals could pay the execution bill.** Across 10,478 audited decision minutes it declined every single trade — and that restraint *was the correct answer*. The negative result is the product.
->
-> **The key discovery, in one line:** our best directional model (54.6% accuracy, statistically indistinguishable from a 53.3% control) would still lose ~78 basis points per round trip to spread and fees — *prediction was never the binding constraint; execution cost was.*
-
-![Net-forecast MAE vs the constant baseline that beat every model](figures/fig_mae_vs_constant.svg)
+[**🗺️ Explore the Research Atlas**](docs/research/ATLAS.md) · [**▶️ Run the Offline Demo**](#quick-start-3-minutes) · [**📊 Compare the Models**](docs/models/COMPARABLE_BENCHMARKS.md)
 
 ---
 
-## Why The Gambler exists
+### Three genuine findings — three *different* evaluation populations
 
-Most retail trading bots die of the same three diseases:
-
-1. **Look-ahead rot** — features or fills that could not have existed at decision time.
-2. **Fee blindness** — models measured in accuracy, accounts measured in money.
-3. **Uncontrolled retraining** — a leaderboard, not a learning system.
-
-The Gambler is a deliberately different artifact: a small, deterministic, fully-accounted pipeline where every prediction is timestamped before its outcome exists, every paper trade pays Decimal-exact costs, every challenger must beat a frozen champion through a preregistered gate, and **NO_TRADE is a first-class, correct answer.**
-
-## What actually happened (the honest findings)
-
-| Finding | Evidence status | Where |
+| Finding | Value | Population & status |
 |---|---|---|
-| Best directional model: **54.60% / AUC 0.5643** — statistically indistinguishable from a 53.34% no-change control (day-block CI crosses 0) | VERIFIED (private data) | [docs/models/BENCHMARKS.md](docs/models/BENCHMARKS.md) |
-| **No net-forecast model ever beat a constant predictor** (best MAE 24.5 vs constant 23.5 on identical rows) | REPRODUCED | [docs/models/BENCHMARKS.md](docs/models/BENCHMARKS.md) |
-| A same-tick taker round trip costs **78.36 bps** on the audited fixture (one spread + fees, Decimal-exact, regression-pinned) | REPRODUCED (offline) | [docs/execution/COST_MATH.md](docs/execution/COST_MATH.md) |
-| Three separate historical cost-accounting bugs (spread double-count, fee slip, quantity truncation) were found, fixed, and frozen as tests | VERIFIED | [docs/execution/COST_MATH.md](docs/execution/COST_MATH.md) |
-| Maker fills are **not identifiable** from trade tape + 1s snapshots — we publish bounds, never estimates | VERIFIED | [docs/experiments/MAKER_EXPERIMENT.md](docs/experiments/MAKER_EXPERIMENT.md) |
-| The learning loop works end-to-end and **rejected its own challenger** for losing to a constant | REPRODUCED | [docs/learning](docs/research/JOURNEY.md) |
+| Best historical directional accuracy | **54.60%** (vs a 53.34% zero-change control; day-block CI crosses zero) | one labeled h60 direction population; VERIFIED on private data |
+| Verified arithmetic fixture | **78.359866 bps** round-trip cost under stated fee assumptions | offline REPRODUCED — [cost math](docs/execution/COST_MATH.md) |
+| Genesis V3 gate | **0 qualifying BUYs across 10,478 historical policy rows** (max forecast +4.18 bps vs a +10 bps buffer) | one audited policy window; REPRODUCED from sealed parquet |
 
-Full journey, including every failed model (VNEXT, L2 T1/T2, Victory Fusion): [docs/research/JOURNEY.md](docs/research/JOURNEY.md).
+> These numbers are **not** from the same experiment, sample or population. Each carries its own evidence status — that discipline is the point of this repository. The headline result: **no strategy in this program's history cleared its execution costs.**
 
-## What you can do with it
+<p align="center"><img src="figures/fig_hypothesis_funnel.svg" alt="Hypothesis funnel: 8 raised, 6 executed, 4 failed, 0 positive expectancy" width="640"></p>
 
-- **Run a fully offline deterministic demo** — synthetic book → prediction → cost gate → decision → paper ledger (no API keys).
-- **Study honest microstructure economics** — spread-once accounting, fee scenarios, VWAP depth walks, fill *bounds*.
-- **Run the learning machinery** — outcome maturity, purged challenger training, champion/challenger promotion gates (all on synthetic or your own data).
-- **Reproduce every public number** — each claim is graded VERIFIED / REPRODUCED / REPORTED_ONLY / EXPERIMENTAL / INSUFFICIENT_EVIDENCE with its command.
-
-## Quick start (offline, no keys)
+## Quick start (3 minutes)
 
 ```bash
 git clone https://github.com/MajidAsghariTabrizi/the-gambler-trading-lab.git
 cd the-gambler-trading-lab
-pip install -r requirements.txt     # numpy, scikit-learn, pytest only
-
-python demo_offline.py              # full deterministic pipeline on synthetic data
-pytest -q tests                     # offline suite (arithmetic fixture, causality, lifecycle)
+pip install -r requirements.txt
+python demo_offline.py      # deterministic, offline, no API keys
+pytest -q tests             # 27 tests, 2 private-data guards skip
 ```
 
-The demo prints a real decision record — machine-readable, deterministic, replayable — including the exact reason a trade is rejected. Actual output:
+Real demo output:
 
 ```text
 === THE GAMBLER - OFFLINE DEMO (synthetic data) ===
 [BOOK]      bid 20236829289 ask 20274464281 spread 18.58 bps (SYNTHETIC)
 [FIXTURE]   1.5M round trip -> 1488246.020070195412777950382 TMN (cost 78.3598661987 bps, exact)
 [FORECAST]  net -70.20 bps (synthetic model)
-[ACCOUNT]   cash 15000000 TMN, btc 0
 [DECISION]  NO_TRADE - expected_net_below_buffer(+10bps)
 ```
 
-## Architecture
+<p align="left"><img src="assets/demo_terminal.gif" alt="Terminal recording of the offline demo" width="560"></p>
 
-```
- read-only market data (optional live mode)
-        │
-        ▼
- normalized events  ──▶  causal features  ──▶  prediction service
- (SQLite WAL store)         (no future data)      (direction + net, hashed)
-                                                      │
-                                                      ▼
-                          execution cost engine  ──▶  decision engine
-                          (Decimal, spread-once)     (BUY/HOLD/SELL/NO_TRADE)
-                                                      │
-                                                      ▼
-                     paper execution  ──▶  outcome maturity  ──▶  learning
-                     (conservation)       (h60 + emission)      (gated promotion)
-                                                      │
-                                                      ▼
-                                        monitoring / dashboard (store-driven)
+## Why it exists
+
+```mermaid
+flowchart LR
+    A[Read-only market data] --> B[Causal features<br/>no future data]
+    B --> C[Prediction<br/>direction + net bps, hashed]
+    C --> D[Execution cost engine<br/>Decimal-exact, spread once]
+    D --> E[Risk gate<br/>stale/locked/crossed fail closed]
+    E --> F{Net forecast > +10 bps<br/>after all costs?}
+    F -->|no| G[NO_TRADE<br/>recorded + justified]
+    F -->|yes| H[Paper execution<br/>conservation-tested]
+    H --> I[Outcome maturity<br/>h60 + purge]
+    I --> J[Challenger training<br/>promotion gated]
 ```
 
-Deep dive: [docs/architecture](docs/research/JOURNEY.md) · Data contract: [docs/reproducibility/DATA_CONTRACT.md](docs/reproducibility/DATA_CONTRACT.md)
+## From dozens of trading experiments to one evidence-driven research system
 
-## What makes this different
+The machine-readable [Research Atlas registry](research_registry/models.json) records **17 model-family entries** across five first-party research lines (2025-12 → today): early rule systems, the 9-expert smart-trader production line with calibrated gates, cost-corrected Genesis simulators, Victory Fusion, and the unified Gambler runtime with real outcome-feedback learning. Not every entry is a separately verified trained model — the registry says exactly which are `TRAINED_VERIFIED` (8), which are `TRAINED_REPORTED_ONLY`, which are `REJECTED`, and which experiment remains `SEALED` by preregistration. Six registered experiments **failed**; their lessons are documented as first-class results.
 
-- **Costs before alpha.** The decision gate compares forecasts against *executable* friction, not paper returns.
-- **Evidence grading everywhere.** No number appears without a status and a command.
-- **Fail-closed by design.** Stale, locked, crossed, or missing inputs produce NO_TRADE — provably (tests).
-- **Negative results kept.** The rejected models are the curriculum.
-- **One frozen experiment, not infinite search.** The maker hypothesis is preregistered; thresholds are immutable; the review date is public.
+**The Atlas is the destination for all of it:** [docs/research/ATLAS.md](docs/research/ATLAS.md)
 
-## 🗺️ The Research Atlas
+## Within-population benchmarks only
 
-The complete, evidence-graded history — every model family from the earliest rule experiments to the frozen maker experiment, every failure kept visible: **[docs/research/ATLAS.md](docs/research/ATLAS.md)**
+<p>
+<img src="figures/fig_direction_accuracy.svg" alt="Directional accuracy vs controls" width="400">
+<img src="figures/fig_cost_decomposition.svg" alt="Cost decomposition" width="400">
+</p>
 
-## Documentation
+MAE leaderboards are deliberately **split by evaluation population** — [see both charts and why pooling is forbidden](docs/models/COMPARABLE_BENCHMARKS.md).
 
-- [Research journey & timeline](docs/research/JOURNEY.md)
-- [Model benchmarks (all models, all statuses)](docs/models/BENCHMARKS.md)
-- [Execution cost mathematics](docs/execution/COST_MATH.md)
-- [The frozen maker experiment](docs/experiments/MAKER_EXPERIMENT.md)
-- [Reproducibility & data limitations](docs/reproducibility/REPRODUCIBILITY.md)
-- [Open-source benchmarks & attribution](docs/references/OPEN_SOURCE_BENCHMARKS.md)
-- [Glossary](docs/references/GLOSSARY.md)
+## Navigate
+[Research Atlas](docs/research/ATLAS.md) · [Model registry](docs/models/ALL_MODELS.md) · [Execution economics](docs/execution/COST_MATH.md) · [Reproducibility & limits](docs/reproducibility/REPRODUCIBILITY.md) · [Frozen maker experiment](docs/experiments/MAKER_EXPERIMENT.md) · [Open-source references](docs/references/OPEN_SOURCE_BENCHMARKS.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
 
-## Contributing
+## Responsible-research statement
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Safe, wanted areas: market-data adapters, execution simulation realism, scientific validation, numerical accounting, deterministic tests, docs. **Do not** submit anything that places real orders or bypasses exchange restrictions.
-
-## Security & responsible usage
-
-This is **research software**. It does not guarantee profits, it does not place real orders, and live-trading adapters are intentionally absent. See [SECURITY.md](SECURITY.md).
+This software **cannot place real orders** — no order-execution code exists. No profitability is claimed anywhere; the program's honest conclusion is that its signals could not pay the execution bill. Trading involves substantial risk; nothing here is investment advice.
 
 ## License
-
-MIT — see [LICENSE](LICENSE). Market data and some research artifacts remain private for data-rights reasons; public numbers derived from them are labeled as such. See [docs/reproducibility/REPRODUCIBILITY.md](docs/reproducibility/REPRODUCIBILITY.md).
-
-**If you take one thing from this repository:** *a model that can't pay the spread isn't an alpha — and a system that proves it to you automatically is worth more than one that hides it.*
+MIT — [LICENSE](LICENSE). Market data and some artifacts remain private for data-rights reasons; public numbers derived from them are labeled. See [reproducibility limitations](docs/reproducibility/REPRODUCIBILITY.md).
