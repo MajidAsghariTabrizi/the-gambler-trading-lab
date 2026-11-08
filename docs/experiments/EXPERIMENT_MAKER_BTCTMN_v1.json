@@ -1,0 +1,64 @@
+{
+ "experiment_id": "EXPERIMENT_MAKER_BTCTMN_v1",
+ "frozen_at": "2026-11-08T18:00:00Z",
+ "preregistered": true,
+ "hypothesis": "Passive maker entry on BTCTMN improves net execution economics during compression regimes after missed fills, adverse selection, fees and exit costs",
+ "hypothesis_count": 1,
+ "market": "BTCTMN",
+ "ticket_tmn": 1500000,
+ "horizon_min": 60,
+ "policies": {
+  "A": "NO_TRADE control (0 cost, 0 pnl)",
+  "B": "TAKER entry / TAKER exit",
+  "C": "MAKER entry (resting limit at bid) / TAKER exit at horizon",
+  "D": "MAKER/MAKER - ONLY if defensible fill model exists, else excluded"
+ },
+ "entry_eligibility": "spread < 6 bps sustained >= 60 s (compression episode) AND book quality OK (not locked/crossed) AND data fresh <= 5 s",
+ "exit_rule": "fixed horizon 60 min from fill; taker exit at ask unless policy D",
+ "fill_rules": {
+  "lower_bound": "SELL trade prints strictly below limit price within episode+10min",
+  "upper_bound": "any SELL print at or below limit",
+  "queue_model": "NON_IDENTIFIABLE from snapshots+trades; bounds only"
+ },
+ "fee_scenarios_taker_bps_per_leg": [
+  30
+ ],
+ "fee_scenarios_maker_bps_per_leg": [
+  0,
+  30
+ ],
+ "account_fees": "UNVERIFIED",
+ "markout_horizons_min": [
+  10,
+  60
+ ],
+ "exclusions": [
+  "locked/crossed books",
+  "stale >5s",
+  "session gaps (sid change)",
+  "duplicate trades (m18 dupe count)",
+  "protected Nov 2-9 outcomes never used"
+ ],
+ "required_independent_sample": {
+  "min_regime_episodes": 30,
+  "min_eligible_entries": 100,
+  "min_distinct_days": 10,
+  "effective_n_note": "episodes must be non-overlapping; entries per episode capped at 1"
+ },
+ "statistics": {
+  "primary": "day-block bootstrap 95% CI on mean net per filled entry, policy C minus policy B paired by episode",
+  "promote_if": "lower 95% bound > +10 bps net advantage AND fill lower-bound scenario also positive",
+  "reject_if": "upper 95% bound < 0 in BOTH fill scenarios with >= min sample",
+  "multiple_testing": "k=1; no threshold reselection permitted"
+ },
+ "stop_continue": {
+  "review_earliest": "2026-11-22T00:00:00Z",
+  "power_rule": "verdict only when required sample met; underpowered = INSUFFICIENT_EVIDENCE",
+  "no_retuning": "spec immutable after freeze; changes require new version file and new prospective window"
+ },
+ "safety": {
+  "live_execution": "OFF",
+  "paper_only": true,
+  "production_vps": "READ-ONLY"
+ }
+}

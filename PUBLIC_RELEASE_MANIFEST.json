@@ -1,0 +1,15 @@
+{
+ "release": "v1.0.0-public",
+ "date": "2026-11-08",
+ "description": "The Gambler - Evidence-Driven Trading Research (public edition)",
+ "test_command": "pytest -q tests",
+ "demo_command": "python demo_offline.py",
+ "figures_command": "python scripts/make_figures.py",
+ "accounting_fixture": {"proceeds": "1488246.0200701954", "loss": "11753.9799298046", "cost_bps": "78.3598661987", "status": "REPRODUCED offline"},
+ "frozen_experiment": {"id": "EXPERIMENT_MAKER_BTCTMN_v1", "sha16": "2591749e4d1bea4c", "earliest_review": "2026-11-22", "status": "FROZEN prospective"},
+ "sanitization": ["private VPS host replaced with env placeholder", "ssh key names replaced", "private data paths redacted", "no market data files included", "no credentials anywhere"],
+ "data_rights": "raw trade tapes and depth archives NOT redistributed; only aggregate statistics and schemas",
+ "known_reproduction_limits": ["MODEL_V2/V3/VF/P3 metrics require sealed private artifacts", "maker fill bounds require private tape", "everything else offline-reproducible"],
+ "unverified_claims_excluded": ["any profitability claim", "any fill estimate beyond bounds", "account fee tier"],
+ "license": "MIT for project code and docs; third-party deps keep their licenses"
+}
