@@ -24,7 +24,7 @@ def _fit():
             # Explicitly labeled synthetic - never presented as the audited model.
             rng = np.random.default_rng(20261104)
             n = 4000
-            d = {'realized_label_net_bps': list(rng.normal(-60, 25, n))}
+            d = {'t': list(range(1700000000, 1700000000 + n)), 'realized_label_net_bps': list(rng.normal(-60, 25, n))}
             for c in ['f_ret_1', 'f_ret_5', 'f_ret_15', 'f_ret_60', 'f_rv_30', 'f_l2_spread_bp']:
                 d[c] = list(rng.normal(0, 1, n))
             _M_SOURCE['source'] = 'synthetic_deterministic_public'
