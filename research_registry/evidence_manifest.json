@@ -1,0 +1,14 @@
+{
+ "accounting_fixture": "REPRODUCED offline (78.3598661987 bps)",
+ "v2_metrics": "VERIFIED private",
+ "v3_vf_p3_metrics": "VERIFIED private parquet",
+ "router_ablation": "VERIFIED private audit replay",
+ "gate_attribution": "VERIFIED private audit",
+ "p5_bounds": "VERIFIED private tape",
+ "restricted": [
+  "raw trade tape",
+  "depth archives",
+  "parquet training rows",
+  "VPS identity"
+ ]
+}

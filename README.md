@@ -101,6 +101,10 @@ Deep dive: [docs/architecture](docs/research/JOURNEY.md) · Data contract: [docs
 - **Negative results kept.** The rejected models are the curriculum.
 - **One frozen experiment, not infinite search.** The maker hypothesis is preregistered; thresholds are immutable; the review date is public.
 
+## 🗺️ The Research Atlas
+
+The complete, evidence-graded history — every model family from the earliest rule experiments to the frozen maker experiment, every failure kept visible: **[docs/research/ATLAS.md](docs/research/ATLAS.md)**
+
 ## Documentation
 
 - [Research journey & timeline](docs/research/JOURNEY.md)

@@ -1,0 +1,51 @@
+[
+ {
+  "url": "https://github.com/MajidAsghariTabrizi/smart-trader",
+  "role": "FIRST_PARTY",
+  "created": "2025-11-20",
+  "local_head": "4de0220",
+  "commits": 183,
+  "scope": "production prediction plane, expert router, gates, sealed EXP-004"
+ },
+ {
+  "url": "https://github.com/MajidAsghariTabrizi/the-gambler-trading-lab",
+  "role": "FIRST_PARTY_CURRENT",
+  "scope": "canonical public research platform"
+ },
+ {
+  "url": "https://github.com/MajidAsghariTabrizi/anti-gravity-phoenix-v4",
+  "role": "FIRST_PARTY_SEPARATE_TRACK",
+  "created": "2026-07-08",
+  "scope": "Arbitrum/DeFi liquidation+arb research; deliberately NOT merged with Wallex spot evaluations"
+ },
+ {
+  "name": "local:stractued-trade@abd3330",
+  "role": "FIRST_PARTY_ARCHIVED",
+  "scope": "earliest structured experiments (2025-12)"
+ },
+ {
+  "name": "local:smart-trader-stg@882daa3",
+  "role": "FIRST_PARTY_ARCHIVED",
+  "scope": "staging line (172 commits)"
+ },
+ {
+  "name": "local:research/genesis_next_gnx_20261031a",
+  "role": "FIRST_PARTY_RESEARCH",
+  "scope": "Genesis V2 cost-corrected simulator"
+ },
+ {
+  "name": "local:research/genesis_v3_gnxv3_20261104b",
+  "role": "FIRST_PARTY_RESEARCH_PRIVATE",
+  "scope": "V3 training artifacts (sealed parquet)"
+ },
+ {
+  "name": "local:research/trader_vf@9f08f36",
+  "role": "FIRST_PARTY_RESEARCH",
+  "scope": "Victory Fusion"
+ },
+ {
+  "name": "local:research/the_gambler_final@7d4f1ea",
+  "role": "FIRST_PARTY_CANONICAL_PRIVATE",
+  "scope": "P0-P5, release package"
+ }
+]

@@ -1,0 +1,134 @@
+[
+ {
+  "id": "structured-rule-v0",
+  "family": "rule/indicator",
+  "project": "stractued-trade",
+  "repo": "local:stractued-trade@abd3330 (2025-12)",
+  "status": "TRAINED_REPORTED_ONLY",
+  "target": "direction",
+  "note": "earliest structured experiments; artifacts not re-verified",
+  "public_ref": null
+ },
+ {
+  "id": "smart-trader-experts-v0..v4",
+  "family": "expert ensemble + router (9 experts incl. huber-direction triples)",
+  "project": "smart-trader",
+  "repo": "github:MajidAsghariTabrizi/smart-trader@4de0220 (183 commits, 2025-11..2026-09)",
+  "status": "TRAINED_VERIFIED",
+  "evidence": "router ablation Oct-9 replay: 0 action flips V0-V4; effective dim 2.755; audit_20261012/expert_router_ablation.json",
+  "target": "direction + net",
+  "note": "router redundancy proven; no incremental OOS value"
+ },
+ {
+  "id": "uncertainty-gate-aleatoric",
+  "family": "calibrated uncertainty gate",
+  "project": "smart-trader",
+  "status": "IMPLEMENTED_VERIFIED",
+  "evidence": "gate attribution: rejects 100 pct of minutes (aleatoric saturation 0.884-1.0); prevented measured C1/C2 losses",
+  "target": "trade filter"
+ },
+ {
+  "id": "C1/C2-net",
+  "family": "net-expectancy candidates",
+  "project": "smart-trader",
+  "status": "REJECTED",
+  "evidence": "net -24..-28 bps/trade verified twice",
+  "target": "net bps"
+ },
+ {
+  "id": "C3-h30",
+  "family": "net-expectancy candidate",
+  "project": "smart-trader",
+  "status": "INSUFFICIENT_EVIDENCE",
+  "evidence": "+1.23 then -1.01 bps, CI crosses 0 both times",
+  "target": "net bps"
+ },
+ {
+  "id": "EXP-004",
+  "family": "preregistered sealed experiment",
+  "project": "smart-trader",
+  "status": "REGISTERED_SEALED",
+  "evidence": "registry REGISTERED + RUN CONTINUE_SHADOW only; readout gate-gated",
+  "target": "shadow eval"
+ },
+ {
+  "id": "M16..M24/VON/FeatureFactory/HMM/boosting",
+  "family": "historical smart-trader generations",
+  "status": "TRAINED_REPORTED_ONLY",
+  "note": "referenced across smart-trader history (M21/M22 LightGBM, M23 magnitude, M24 Huber multi-horizon, VON ACCEPT/ABSTAIN); artifacts not independently re-verified this atlas - listed for completeness, not ranked"
+ },
+ {
+  "id": "genesis-v2-gnx",
+  "family": "cost-corrected paper simulator",
+  "project": "genesis_next_gnx_20261031a",
+  "status": "TRAINED_VERIFIED",
+  "evidence": "5 paper trades avg -28.99 bps (fees are real)",
+  "target": "paper execution"
+ },
+ {
+  "id": "genesis-v3",
+  "family": "ridge on causal features, net-bps target",
+  "project": "genesis_v3_gnxv3_20261104b@private",
+  "status": "TRAINED_VERIFIED",
+  "evidence": "MAE 28.336; max forecast +4.18 bps; 0 BUY / 10,478 min",
+  "target": "executable_net_bps_h60"
+ },
+ {
+  "id": "vf-c1",
+  "family": "Victory Fusion C1",
+  "project": "trader_vf@9f08f36",
+  "status": "REJECTED",
+  "evidence": "MAE 26.70 / IC -0.017 vs constant 26.39"
+ },
+ {
+  "id": "vf-c2",
+  "family": "Victory Fusion C2",
+  "project": "trader_vf@9f08f36",
+  "status": "REJECTED",
+  "evidence": "MAE 37.47 / IC -0.018"
+ },
+ {
+  "id": "model-v2",
+  "family": "Huber walk-forward direction",
+  "project": "smart-trader lineage -> Gambler live emitter",
+  "status": "TRAINED_VERIFIED",
+  "evidence": "54.60 pct / AUC 0.5643 vs zero-change control 53.34 pct; day-block CI crosses 0; ~88 effective positions",
+  "target": "direction h60",
+  "public": "metrics VERIFIED on private data"
+ },
+ {
+  "id": "vnext",
+  "family": "adaptive experts",
+  "project": "pre-Gambler",
+  "status": "TRAINED_VERIFIED",
+  "evidence": "52.47 pct / 0.5465 below control"
+ },
+ {
+  "id": "p3-challenger",
+  "family": "purged ridge challenger",
+  "project": "the_gambler_final@0752b2c..a432c0a",
+  "status": "TRAINED_VERIFIED",
+  "evidence": "MAE 24.546 / IC -0.0158 vs constant 23.546 -> SHADOW, promotion GATED"
+ },
+ {
+  "id": "v3-local-reconstruction",
+  "family": "6-col Ridge refit",
+  "project": "the_gambler_final",
+  "status": "EXPERIMENTAL",
+  "evidence": "corr -0.08 vs audited V3 (test-pinned)"
+ },
+ {
+  "id": "p4-opportunity-filter",
+  "family": "execution-aware conditional",
+  "project": "the_gambler_final@b7bb255",
+  "status": "INSUFFICIENT_EVIDENCE",
+  "evidence": "n=40 admissible minutes/9 days"
+ },
+ {
+  "id": "p5-maker-bounds",
+  "family": "passive fill bounds model",
+  "project": "the_gambler_final@d1642ad",
+  "status": "IMPLEMENTED_VERIFIED",
+  "evidence": "strict 21.4 pct / touch 28.6 pct on n=14 attempts; queue NON_IDENTIFIABLE"
+ }
+]
