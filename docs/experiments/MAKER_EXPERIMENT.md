@@ -1,6 +1,6 @@
 # The Frozen Maker Experiment (EXPERIMENT_MAKER_BTCTMN_v1)
 
-**Status: FROZEN / prospective window opened 2026-11-08. Earliest review: 2026-11-22. Spec hash (sha16): `2591749e4d1bea4c`** — the immutable spec is [here](MAKER_EXPERIMENT_spec.json) (published verbatim).
+**Status: FROZEN / prospective window opened 2026-11-08. Earliest review: 2026-11-22. Spec hash (sha16): `2591749e4d1bea4c`** — the immutable spec is [here](EXPERIMENT_MAKER_BTCTMN_v1.json) (published verbatim).
 
 ## Hypothesis (k=1)
 Passive maker entry during liquidity-compression regimes improves net execution economics after missed fills, adverse selection, fees and exits.
