@@ -1,0 +1,93 @@
+{
+  "direction": {
+    "title": "DIRECTIONAL ACCURACY",
+    "unit": "HIGHER IS BETTER · %",
+    "max": 60,
+    "ticks": [
+      "0",
+      "15",
+      "30",
+      "45",
+      "60%"
+    ],
+    "rows": [
+      [
+        "MODEL_V2",
+        54.6,
+        false
+      ],
+      [
+        "Zero-change",
+        53.34,
+        true
+      ],
+      [
+        "VNEXT",
+        52.47,
+        false
+      ]
+    ],
+    "population": "Population: matched h60 direction labels · private data · approximately 88 effective observations.",
+    "verdict": "The highest accuracy. An uncertain edge.",
+    "explanation": "MODEL_V2 leads this matched population by 1.26 percentage points over the zero-change control. The day-block confidence interval for that difference crosses zero; a reliable advantage is not established."
+  },
+  "vf": {
+    "title": "NET-RETURN MEAN ABSOLUTE ERROR",
+    "unit": "LOWER IS BETTER · BPS",
+    "max": 40,
+    "ticks": [
+      "0",
+      "10",
+      "20",
+      "30",
+      "40 bps"
+    ],
+    "rows": [
+      [
+        "Constant −60",
+        26.39,
+        true
+      ],
+      [
+        "VF C1",
+        26.7,
+        false
+      ],
+      [
+        "VF C2",
+        37.47,
+        false
+      ]
+    ],
+    "population": "Population: Victory Fusion evaluation rows · private data · separate from P3 validation.",
+    "verdict": "The simple control wins.",
+    "explanation": "The constant −60 bps forecast has the lowest error in this population. Neither Victory Fusion candidate improves on that control. Prediction error alone does not measure trading profitability."
+  },
+  "p3": {
+    "title": "NET-RETURN MEAN ABSOLUTE ERROR",
+    "unit": "LOWER IS BETTER · BPS",
+    "max": 30,
+    "ticks": [
+      "0",
+      "7.5",
+      "15",
+      "22.5",
+      "30 bps"
+    ],
+    "rows": [
+      [
+        "Constant −60",
+        23.55,
+        true
+      ],
+      [
+        "P3 challenger",
+        24.55,
+        false
+      ]
+    ],
+    "population": "Population: P3 validation rows · private data · never pooled with Victory Fusion evaluation rows.",
+    "verdict": "Challenger promotion stays gated.",
+    "explanation": "The purged ridge challenger has higher validation error than the constant forecast. It remains in shadow evaluation. These rounded values are specific to P3’s validation population."
+  }
+}

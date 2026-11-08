@@ -1,0 +1,58 @@
+[
+ {
+  "id": "L2-T1/T2",
+  "when": "2026-11-02",
+  "status": "REJECTED",
+  "what": "preregistered forward eval of L2 features",
+  "why_failed": "registered fail; protected outcomes never reused for tuning"
+ },
+ {
+  "id": "GENESIS-V2-paper",
+  "when": "2026-11-03",
+  "status": "COMPLETED_NEGATIVE",
+  "what": "fee-corrected paper execution",
+  "result": "-28.99 bps avg over 5 trades"
+ },
+ {
+  "id": "GENESIS-V3-gate",
+  "when": "2026-11-04",
+  "status": "COMPLETED_NEGATIVE",
+  "what": "net-forecast gate over 10,478 min",
+  "result": "0 BUY; max +4.18 bps < +10 buffer"
+ },
+ {
+  "id": "VF-fusion",
+  "when": "2026-11-05",
+  "status": "REJECTED",
+  "what": "C1/C2 fusion",
+  "result": "both worse than constant"
+ },
+ {
+  "id": "P3-learning",
+  "when": "2026-11-08",
+  "status": "COMPLETED",
+  "what": "real outcome-feedback loop + purged challenger",
+  "result": "challenger loses to constant; promotion gated"
+ },
+ {
+  "id": "P4-frontier",
+  "when": "2026-11-08",
+  "status": "COMPLETED_NEGATIVE",
+  "what": "3-market opportunity frontier",
+  "result": "no market qualifies; BTCUSDT size-infeasible; USDTTMN FX-leg only"
+ },
+ {
+  "id": "P5-maker",
+  "when": "2026-11-08",
+  "status": "FROZEN_PROSPECTIVE",
+  "what": "maker execution economics, spec 2591749e4d1bea4c",
+  "earliest_review": "2026-11-22"
+ },
+ {
+  "id": "EXP-004",
+  "when": "2026-10",
+  "status": "SEALED",
+  "what": "smart-trader preregistered shadow experiment",
+  "note": "readout never computed; remains sealed by protocol"
+ }
+]
