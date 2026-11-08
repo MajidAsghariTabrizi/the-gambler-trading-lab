@@ -25,4 +25,6 @@ The calculator uses `bid/ask = (1 - spread/20000) / (1 + spread/20000)` for a mi
 
 ## Hosting
 
-Serve `storefront/` on any static host. The private Sites deployment is a reviewable preview; it does not make the public repository's page available to everyone. A GitHub Pages workflow is intentionally not enabled automatically: hosting settings and the public launch remain an owner decision. No secrets belong in this static directory.
+The public website is [The Gambler Evidence Observatory](https://majidasgharitabrizi.github.io/the-gambler-trading-lab/). `.github/workflows/pages.yml` deploys `storefront/` to GitHub Pages on relevant pushes to `master`, after checking that public evidence matches the canonical registries. The workflow can also be run manually from Actions. No secrets belong in this static directory.
+
+You can also serve `storefront/` on any static host. The separate Sites upload encountered a connection reset and is not a verified deployment; GitHub Pages is the public hosting path.
