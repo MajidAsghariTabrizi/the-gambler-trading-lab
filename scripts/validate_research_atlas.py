@@ -6,7 +6,7 @@ models = json.load(open(os.path.join(R, 'models.json')))
 exps = json.load(open(os.path.join(R, 'experiments.json')))
 repos = json.load(open(os.path.join(R, 'repositories.json')))
 assert len(models) >= 15 and len(exps) >= 8 and len(repos) >= 9
-VALID = {'TRAINED_VERIFIED','TRAINED_REPORTED_ONLY','TRAINED_ARTIFACT_MISSING','IMPLEMENTED_NOT_TRAINED','PROPOSED_ONLY','REJECTED','NOT_FOUND','IMPLEMENTED_VERIFIED','REGISTERED_SEALED','INSUFFICIENT_EVIDENCE','EXPERIMENTAL'}
+VALID = {'TRAINED_VERIFIED','TRAINED_REPORTED_ONLY','TRAINED_ARTIFACT_MISSING','IMPLEMENTED_NOT_TRAINED','PROPOSED_ONLY','REJECTED','NOT_FOUND','IMPLEMENTED_VERIFIED','REGISTERED_SEALED','REGISTERED_READOUT_20261014','INSUFFICIENT_EVIDENCE','EXPERIMENTAL'}
 for m in models: assert m['status'] in VALID, m.get('id')
 frozen = [e for e in exps if e['status'] == 'FROZEN_PROSPECTIVE']
 assert any('2591749e4d1bea4c' in str(e) for e in frozen)
