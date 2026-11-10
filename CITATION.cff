@@ -1,9 +1,16 @@
 cff-version: 1.2.0
-message: "If this repository helped your research, cite it."
-title: "The Gambler - Evidence-Driven Trading Research"
+message: "If this repository or the flagship study helped your research, cite it."
+title: "The Gambler - Evidence-Driven Trading Research: From Predictive Accuracy to Executable Alpha"
 type: software
 authors:
-  - name: "The Gambler Research Authors"
-version: 1.0.0
-date-released: "2026-11-08"
+  - name: "Majid Asghari Tabrizi"
+preferred-citation:
+  type: article
+  title: "From Predictive Accuracy to Executable Alpha: A Longitudinal Case Study of a Cost-Aware Trading Research System"
+  authors:
+    - name: "Majid Asghari Tabrizi"
+  year: 2026
+  url: "https://majidasgharitabrizi.github.io/the-gambler-trading-lab/research/from-prediction-to-executable-alpha/"
+version: 2.0.0
+date-released: "2026-11-09"
 license: MIT
