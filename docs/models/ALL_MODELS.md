@@ -7,7 +7,7 @@
 | uncertainty-gate | calibrated filter | IMPLEMENTED_VERIFIED | 100% protective abstention while C1/C2 negative |
 | C1/C2 | net candidates | REJECTED | −24…−28 bps |
 | C3-h30 | net candidate | INSUFFICIENT_EVIDENCE | +1.23→−1.01 bps, CI crosses 0 |
-| EXP-004 | sealed experiment | REGISTERED_SEALED | readout never computed, by protocol |
+| EXP-004 | sealed experiment | REGISTERED_READOUT_20261014 | readout exists (server artifacts); superseded 2026-11-09 |
 | M16–M24 / VON / FeatureFactory / HMM / LightGBM / XGBoost / CatBoost | historical generations | TRAINED_REPORTED_ONLY | listed, not re-verified, not ranked |
 | genesis-v2-gnx | cost-corrected paper | TRAINED_VERIFIED | −28.99 bps avg |
 | genesis-v3 | ridge net-bps | TRAINED_VERIFIED | MAE 28.336; 0 BUY/10,478 |

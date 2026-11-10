@@ -16,6 +16,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
 
+### 📄 Read the Complete Research Study
+
+**[From Predictive Accuracy to Executable Alpha](https://majidasgharitabrizi.github.io/the-gambler-trading-lab/research/from-prediction-to-executable-alpha/)** — a one-year longitudinal case study: how 54.6% directional accuracy became a registered −42.53 bps/trade verdict, and everything the evaluation machinery taught us. *(canonical: GitHub Pages)*
+
 [**🗺️ Explore the Research Atlas**](docs/research/ATLAS.md) · [**▶️ Run the Offline Demo**](#quick-start-3-minutes) · [**📊 Compare the Models**](docs/models/COMPARABLE_BENCHMARKS.md)
 
 ---

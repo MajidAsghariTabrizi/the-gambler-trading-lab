@@ -47,9 +47,10 @@
   "id": "EXP-004",
   "family": "preregistered sealed experiment",
   "project": "smart-trader",
-  "status": "REGISTERED_SEALED",
-  "evidence": "registry REGISTERED + RUN CONTINUE_SHADOW only; readout gate-gated",
-  "target": "shadow eval"
+  "status": "REGISTERED_READOUT_20261014",
+  "evidence": "EXP004_FINAL_READOUT.json + C3_DECAY_ANALYSIS + ECONOMIC_REPLAY_FINAL on server (read-only); contents not re-analyzed in gate pass",
+  "target": "shadow eval",
+  "note": "Atlas SEALED label superseded 2026-11-09"
  },
  {
   "id": "M16..M24/VON/FeatureFactory/HMM/boosting",

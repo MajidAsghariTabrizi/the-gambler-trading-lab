@@ -1,0 +1,18 @@
+model_id,classification,status,grade
+smart-trader-experts-v0..v4,trained ML (ensemble+router),TRAINED_WITH_VERIFIED_ARTIFACT,VERIFIED_PRIVATE
+genesis-v3,trained ML (ridge),TRAINED_AND_REPRODUCED,REPRODUCED_LOCAL
+vf-c1,trained ML (fusion),REJECTED,VERIFIED_PRIVATE
+vf-c2,trained ML (fusion),REJECTED,VERIFIED_PRIVATE
+model-v2,trained ML (Huber WF),TRAINED_WITH_VERIFIED_ARTIFACT,VERIFIED_PRIVATE
+vnext,trained ML (adaptive experts),TRAINED_WITH_VERIFIED_ARTIFACT,VERIFIED_PRIVATE
+p3-challenger,trained ML (purged ridge),TRAINED_WITH_VERIFIED_ARTIFACT,REPRODUCED_PRIVATE
+genesis-v2-gnx,policy simulator,TRAINED_WITH_VERIFIED_ARTIFACT,VERIFIED_PRIVATE
+p5-maker-bounds,execution research,IMPLEMENTED_NOT_TRAINED_ML,VERIFIED_FROZEN
+uncertainty-gate,risk gate,IMPLEMENTED_NOT_TRAINED_ML,VERIFIED_PRIVATE
+gate-attribution-era,risk gate,IMPLEMENTED,VERIFIED_PRIVATE
+EXP-004,registered experiment,READOUT_2026-10-14,VERIFIED_PRIVATE
+v3-local-reconstruction,reconstruction,EXPERIMENTAL,REPRODUCED_LOCAL
+p4-opportunity-filter,filter,INSUFFICIENT_EVIDENCE,VERIFIED_PRIVATE
+M16-M24/VON/FF/HMM/boosting,historical generations,REPORTED_ONLY,ARTIFACT_MISSING
+structured-rule-v0,rule system,REPORTED_ONLY,REPORTED_ONLY
+zero-change-control,baseline,CONTROL,VERIFIED_PRIVATE

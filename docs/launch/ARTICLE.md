@@ -1,3 +1,5 @@
+> **SUPERSEDED (2026-11-09):** the canonical flagship article is now [From Predictive Accuracy to Executable Alpha](https://majidasgharitabrizi.github.io/the-gambler-trading-lab/research/from-prediction-to-executable-alpha/). This earlier launch article is retained for the historical record.
+
 # Launch article (technical, for blog/medium)
 
 ## I Built a Trading AI That Refuses to Trade — and That Was the Point

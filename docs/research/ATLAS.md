@@ -1,5 +1,7 @@
 # 🗺️ The Research Atlas
 
+> 📄 **Flagship paper:** [From Predictive Accuracy to Executable Alpha](https://majidasgharitabrizi.github.io/the-gambler-trading-lab/research/from-prediction-to-executable-alpha/) — the complete longitudinal study behind this atlas (canonical: GitHub Pages; source: [from-prediction-to-executable-alpha.md](from-prediction-to-executable-alpha.md)).
+
 **From prediction accuracy to execution-aware intelligence — the complete, evidence-graded history of The Gambler.**
 
 The Atlas is generated from a machine-readable registry (`research_registry/`); every claim below carries an evidence status. Failed experiments are first-class citizens.
