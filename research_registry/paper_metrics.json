@@ -1,0 +1,32 @@
+{
+ "generated": "2026-11-09",
+ "source": "final accuracy audit commits 0c2459c/2dc6bb7/76770a5/bb4db50 (private) + registered Nov-9 artifacts (hashes public)",
+ "direction": {
+  "population_dev": {"model_v2_acc": 0.5460, "model_v2_auc": 0.5643, "control_acc": 0.5334, "vnext_acc": 0.5247, "vnext_auc": 0.5465, "ci_crosses_zero": true, "effective_n": 88, "grade": "VERIFIED_PRIVATE"},
+  "population_registered": {"n_pairs": 20185, "auc_v2": 0.5683, "auc_vnext": 0.5574, "h1_auc_v2": 0.5987, "h1_acc_v2": 0.4018, "grade": "EXACTLY_REPRODUCED"}
+ },
+ "nov9_registered": {
+  "decision": "INCREMENTAL_PREDICTIVE_EDGE:FAIL",
+  "t1": {"dauc_ci": [-0.0726, 0.0097], "dacc_ci": [-0.056, 0.1], "dnet_ci": [-5.8102, 10.9574], "verdict": "REJECT"},
+  "t2": {"dauc_ci": [-0.0769, 0.0007], "dacc_ci": [-0.0754, 0.0871], "dnet_ci": [-5.8156, 6.1945], "verdict": "REJECT"},
+  "next_candle": {"n": 19196, "auc_challenger_t1": 0.5016, "auc_challenger_t2": 0.5175, "auc_baseline": 0.5973},
+  "cov5": {
+   "v2": {"signals": 1295, "net_bps": -42.53, "ci_registered": [-54.27, -31.8], "ci_rerun": [-53.89, -31.96], "pos_days": [0, 14], "nonoverlap": 150, "cum_bps": -5333.8},
+   "vnext": {"signals": 1447, "net_bps": -30.83, "ci_registered": [-42.26, -19.11], "pos_days": [1, 13], "nonoverlap": 145, "cum_bps": -3313.4}
+  },
+  "abstained_minutes_of_total": [18890, 20185],
+  "artifact_hashes": {"verdict_md_sha256": "0061cea333cce2f7cfed7238642d7dc11fd0f5b6cea022204d5044eb769dc076", "l2eval_sha256": "cde655c70d30a78cc92f8ceb3cbd74bcc0591a7e219cebb91effd2c830601907"}
+ },
+ "regression_by_population": {
+  "v3_rows": {"n": 9616, "days": 9, "v3_mae": 28.3363, "v3_rmse": 40.1394, "v3_ic": -0.0118, "constant_m60_mae": 26.2663, "train_mean_mae": 25.3769, "paired_delta_ci": [-4.0967, -0.1127], "grade": "REPRODUCED_LOCAL"},
+  "vf_rows": {"constant_mae": 26.39, "c1_mae": 26.7, "c2_mae": 37.47, "grade": "VERIFIED_PRIVATE"},
+  "p3_rows": {"constant_mae": 23.546, "challenger_mae": 24.546, "effective_n": 34, "grade": "VERIFIED_PRIVATE"}
+ },
+ "economics": {
+  "fixture": {"capital_tmn": 1500000, "cost_bps": 78.3598661987, "returned": 1488246.0200701954, "grade": "REPRODUCED_OFFLINE"},
+  "taker_regimes_bps": [66, 97], "maker_bounds": {"strict_through": 0.214, "touch": 0.286, "n": 14},
+  "maker_spec_sha16": "2591749e4d1bea4c", "maker_earliest_review": "2026-11-22"
+ },
+ "census": {"registry_entries": 17, "trained_with_artifacts": 7, "experiments": 8, "repositories": 9},
+ "data": {"micro_bytes": 1446091815, "decision_rows": 102810, "outcome_rows": 102571, "sealed_parquet_rows": 10478, "parquet_sha16": "9366bd85ad487cdc"}
+}

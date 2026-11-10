@@ -20,6 +20,9 @@ for dirpath, _, files in os.walk(root):
         for m2 in re.finditer(r'\]\(([^)#?\s]+)(?:#[^)\s]*)?\)', open(fp, encoding='utf-8').read()):
             t = m2.group(1)
             if t.startswith(('http://','https://','mailto:')): continue
-            if not os.path.exists(os.path.normpath(os.path.join(dirpath, t))): bad.append(fn + ' -> ' + t)
+            target = os.path.normpath(os.path.join(dirpath, t))
+            if not os.path.exists(target) and t.endswith('/') and os.path.exists(target + '.md'):
+                target = target + '.md'  # Jekyll pretty permalink
+            if not os.path.exists(target): bad.append(fn + ' -> ' + t)
 assert not bad, bad
 print('ATLAS_VALID: %d models, %d experiments, %d repositories, 0 broken links' % (len(models), len(exps), len(repos)))

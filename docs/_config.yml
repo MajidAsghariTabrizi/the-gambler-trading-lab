@@ -1,0 +1,6 @@
+title: The Gambler Trading Lab
+description: Evidence-driven trading research - prediction, execution economics, and an honest negative result
+theme: jekyll-theme-modernist
+markdown: kramdown
+kramdown:
+  parse_block_html: true
