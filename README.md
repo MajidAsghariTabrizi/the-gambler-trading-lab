@@ -2,6 +2,12 @@
 
 # THE GAMBLER
 
+## [↗ Open the Evidence Observatory website](https://majidasgharitabrizi.github.io/the-gambler-trading-lab/)
+
+[![Evidence Observatory — interactive benchmarks, model atlas and execution lab](assets/storefront-preview.png)](https://majidasgharitabrizi.github.io/the-gambler-trading-lab/)
+
+**New: [Evidence Observatory storefront](docs/STOREFRONT.md)** — interactive matched benchmarks, searchable model evidence, all experiment records, and an execution-cost explorer. Run `python -m http.server 4173 --directory storefront` to explore it locally. [Which model is best?](docs/models/BENCHMARK_REVIEW.md)
+
 **The Trading AI That Knows When NOT to Trade.**
 *An evidence-driven research system for causal prediction, realistic trading execution, paper trading and controlled learning.*
 
