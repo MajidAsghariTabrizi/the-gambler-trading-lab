@@ -7,6 +7,9 @@ on:
       - 'storefront/**'
       - 'research_registry/**'
       - 'scripts/build_storefront.py'
+      - 'docs/research/**'
+      - 'docs/figures/**'
+      - 'scripts/build_paper_page.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -32,6 +35,8 @@ jobs:
           python-version: '3.11'
       - name: Check public evidence synchronization
         run: python scripts/build_storefront.py --check
+      - name: Build flagship paper page
+        run: python scripts/build_paper_page.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
